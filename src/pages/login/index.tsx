@@ -3,12 +3,14 @@ import { Text, View, Image, Alert } from "react-native"
 import { style } from "./style";
 import Logo from "../../assets/logoifba.png";
 import { MaterialIcons, Octicons } from "@expo/vector-icons"
-import { Input } from "../../components/input";
-import { Botao } from "../../components/button";
+import { Input } from "../../components/Input";
+import { Botao } from "../../components/Button";
+import { useNavigation, NavigationProp } from "@react-navigation/native"// Bibioteca para realizar a navegação entre as paginas 
 
 export default function Login (){
+
+    const navigation = useNavigation<NavigationProp<any>>();// navegador para outras telas 
     // primeiro parametro é o valor da variavel (Get) e o segundo é a atribuiçao do valor (Set)
-    
     const [email,setEmail] = useState ("");
     const [senha,setSenha] = useState ("");
     const [mostrarSenha,setMostrarSenha] = useState (true);
@@ -20,14 +22,16 @@ export default function Login (){
         try {
             setCarregando(true);
             if (!email || !senha){
-                return Alert.alert("Atenção", "Informe os campos Obrigatórios !");
+                throw new Error();
+            }else{
+                setTimeout(() => {
+                    Alert.alert("Logado com sucesso");
+                    navigation.reset({routes:[{name:"BotaoRotas"}]});// acessa a segunda tela com as outras coisas
+                    setCarregando(false);
+                },3000);
             }
-            setTimeout(() => {
-                Alert.alert("Logado com sucesso");
-                setCarregando(false);
-            },3000);
         } catch (error) {
-            console.log (error);
+            Alert.alert ("Atenção", "Informe os campos Obrigatórios !");
         }
     }
     return (
