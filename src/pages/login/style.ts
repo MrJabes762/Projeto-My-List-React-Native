@@ -24,7 +24,6 @@ export const style = StyleSheet.create({
     },
     boxBottom: {
         height: Dimensions.get('window').height / 3,
-        backgroundColor: '#0B671B',
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center'
@@ -46,7 +45,7 @@ export const style = StyleSheet.create({
     textoFim:{
         color:themes.colors.verdeCLaroIfba,
         fontSize:16,
-        paddingBottom:12
+        marginBottom:20
     },
     textoFimCreate:{
         fontWeight:'bold',

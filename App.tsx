@@ -1,12 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
 import {View} from 'react-native';
-import Login from './src/pages/login';
+import './gesture-handler';
+import Routes from './src/routes/index.routes';// Importação das Rotas de navegação
+import { NavigationContainer } from "@react-navigation/native"
 
 export default function App() {
   return (
-    <View>
-      <StatusBar style="auto" />
-      <Login/>
-    </View>
+    <NavigationContainer>
+      <Routes/>
+    </NavigationContainer>
   );
 }
