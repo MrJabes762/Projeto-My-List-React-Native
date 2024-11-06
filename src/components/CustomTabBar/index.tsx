@@ -1,12 +1,14 @@
 
-import React from "react";
+import React, { useContext } from "react";
 import { TouchableOpacity, View } from "react-native"
 import { styleTabBar } from "./style";
 import { AntDesign, Entypo, FontAwesome, MaterialIcons } from "@expo/vector-icons"
 import { themes } from "../../global/themes";
+import { AuthContextList } from "../../context/authContext_list";
 
 
 export default ({ state, navigation }) => {
+    const {abrir} = useContext<any>(AuthContextList);
     const ir = (screenName: string) =>{
         navigation.navigate (screenName);
     }
@@ -20,7 +22,7 @@ export default ({ state, navigation }) => {
                     style={{opacity: state.index === 0? 1:0.2,color : themes.colors.verdeCLaroIfba, fontSize:32}}
                 />
             </TouchableOpacity>
-            <TouchableOpacity style={styleTabBar.botaoCentro}>
+            <TouchableOpacity style={styleTabBar.botaoCentro} onPress={abrir}>
                 <View style = {{
                         width: '100%', 
                         left: 10, 
