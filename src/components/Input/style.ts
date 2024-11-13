@@ -11,7 +11,7 @@ export const stylesInput = StyleSheet.create ({
         borderColor: themes.colors.black,
         borderWidth: 3,
         borderRadius: 30,
-        color: 'black',
+        color: themes.colors.black,
         opacity: 0.6,
         flexDirection: 'row'
     },
@@ -22,7 +22,7 @@ export const stylesInput = StyleSheet.create ({
     },
     textInputs: {
         color: themes.colors.verdeCLaroIfba,
-        marginVertical: 6,
+        marginVertical: 3,
         fontWeight: 'bold',
         textTransform: 'uppercase'
     },
