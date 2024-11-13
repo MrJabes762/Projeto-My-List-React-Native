@@ -7,6 +7,7 @@ export const styleList = StyleSheet.create ({
         width:'100%',
         height:'100%',
         alignItems: 'center',
+        position:'relative',
         backgroundColor:themes.colors.verdeCLaroIfba
     },
     cabecalho:{

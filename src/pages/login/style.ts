@@ -7,6 +7,7 @@ export const style = StyleSheet.create({
         width: Dimensions.get('window').width,
         height: Dimensions.get('window').height,
         alignItems: 'center',
+        position:'relative',
         justifyContent: 'center',
         backgroundColor: themes.colors.verdeEscuroIfba
     },
