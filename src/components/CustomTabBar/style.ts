@@ -29,6 +29,6 @@ export const styleTabBar = StyleSheet.create({
         justifyContent: 'center',
         zIndex: 9999,
         top: -30,
-        backgroundColor: themes.colors.verdeCLaroIfba
+        backgroundColor: themes.colors.verdeMaisouMenos
     }
 });
