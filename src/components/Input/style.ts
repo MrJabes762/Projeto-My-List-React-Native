@@ -6,7 +6,7 @@ export const stylesInput = StyleSheet.create ({
         width: Dimensions.get('window').width * 0.9,
         alignItems: 'center',
         backgroundColor: 'white',
-        paddingVertical: 7,
+        paddingVertical: 4,
         paddingHorizontal: 15,
         borderColor: themes.colors.black,
         borderWidth: 3,
