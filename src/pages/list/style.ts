@@ -27,7 +27,7 @@ export const styleList = StyleSheet.create ({
     },
     lista:{
         marginTop:40,
-        paddingHorizontal:10
+        paddingHorizontal:5
     },
     card:{
         width: '100%',

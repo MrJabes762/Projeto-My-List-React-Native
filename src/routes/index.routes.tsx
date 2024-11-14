@@ -1,7 +1,6 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";// Biblioteca responsavel pela navegação entre telas 
 import Login from "../pages/login";
-import List from "../pages/list";
 import { themes } from "../global/themes";
 import Botoes from "./botao.routes";
 

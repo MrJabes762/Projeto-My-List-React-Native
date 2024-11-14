@@ -1,5 +1,4 @@
-import { Dimensions, StyleSheet } from "react-native";
-import { themes } from "../../global/themes";
+import { StyleSheet } from "react-native";
 
 export const styleSelecionar = StyleSheet.create ({
     circulo:{

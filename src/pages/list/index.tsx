@@ -57,7 +57,7 @@ export default function List() {
             <TouchableOpacity style = {styleList.card}>
                 <View style= {styleList.rowCard}>
                     <View style = {styleList.rowCardEsqueda}>
-                        <Selecionar />
+                        <Selecionar/>
                             <View>
                                 <Text 
                                     style = {styleList.cardTitulo} 
