@@ -26,7 +26,7 @@ export const styleList = StyleSheet.create ({
         width:'80%'
     },
     lista:{
-        marginTop:40,
+        marginTop:15,
         paddingHorizontal:5
     },
     card:{
@@ -53,12 +53,14 @@ export const styleList = StyleSheet.create ({
     },
     cardTitulo:{
         width:200,
+        textTransform:'capitalize',
         fontWeight:'bold',
-        fontSize:14,
+        fontSize:16,
         color:themes.colors.verdeEscuroIfba
     },
     cardDesc:{
         fontStyle:'italic',
+        fontWeight:'bold',
         fontSize:14,
         color:themes.colors.verdeCLaroIfba
     }

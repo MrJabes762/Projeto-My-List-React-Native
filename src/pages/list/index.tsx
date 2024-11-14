@@ -4,6 +4,7 @@ import { styleList } from "./style";
 import { Input } from "../../components/Input";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Selecionar } from "../../components/Selecionar";
+import { Prioridade } from "../../components/Prioridade";
 
 
 type PropCard = {
@@ -33,7 +34,7 @@ const data:Array<PropCard> = [
     },
     {
         id:3,
-        titulo: "Levantar Requisitos dos Softwares",
+        titulo: "levantar Requisitos dos Softwares",
         descricao:"Entrevista com os clientes para aferição das necessidades",
         prioridade: "Urgente"
     },
@@ -47,6 +48,36 @@ const data:Array<PropCard> = [
         id:5,
         titulo: "detalhamento da arquitetura",
         descricao:"Levantar as infos e definir arquitetura",
+        prioridade: "Urgente"
+    },
+    {
+        id:6,
+        titulo: "Construção do Backend da Aplixação",
+        descricao:"Usar Spring Boot ou Quarkus",
+        prioridade: "Urgente"
+    },
+    {
+        id:7,
+        titulo: "Atualização de Dependencias do projeto",
+        descricao:"Colocar versões atuais",
+        prioridade: "Urgente"
+    },
+    {
+        id:8,
+        titulo: "descrever arquitetura do projeto ",
+        descricao:"Aplicar Microserviços para Operações",
+        prioridade: "Urgente"
+    },
+    {
+        id:9,
+        titulo: "Mantutenção diaria dos servidores",
+        descricao:"ajuste de latencia ",
+        prioridade: "Opcional"
+    },
+    {
+        id:10,
+        titulo: "Verificar a integridade dos dados",
+        descricao:"Aplicar normalização de Banco de Dados",
         prioridade: "Urgente"
     }
 ]
@@ -72,7 +103,10 @@ export default function List() {
                                     >{item.descricao}</Text>
                             </View>
                     </View>
-                    {/*<Prioridade/>*/}
+                    <Prioridade
+                        color="red"
+                        caption={item.prioridade}
+                    />
                 </View>
             </TouchableOpacity>
         );
