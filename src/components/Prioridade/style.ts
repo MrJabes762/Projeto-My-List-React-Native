@@ -8,7 +8,8 @@ export const stylePrioridade = StyleSheet.create ({
         alignItems:'center',
         justifyContent:'center',
         backgroundColor: themes.colors.vermelhoIfba,
-        borderRadius:10
+        borderRadius:10,
+        marginHorizontal:3
     },
     textoBotao:{
         color:'white'

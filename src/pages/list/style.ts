@@ -56,12 +56,14 @@ export const styleList = StyleSheet.create ({
         textTransform:'capitalize',
         fontWeight:'bold',
         fontSize:16,
-        color:themes.colors.verdeEscuroIfba
+        color:themes.colors.verdeEscuroIfba,
+        marginRight:3
     },
     cardDesc:{
         fontStyle:'italic',
         fontWeight:'bold',
         fontSize:14,
-        color:themes.colors.verdeCLaroIfba
+        color:themes.colors.verdeCLaroIfba,
+        marginRight:3
     }
 });

@@ -20,11 +20,12 @@ type Propiedades = TextInputProps & {
     title?: string,
     onIconLeftPress?: () => void,// Propriedades que recebe uma função 
     onIconRightPress?: () => void
+    heigh?:number
 }
 // No input receberemos as propriedades de um text imput 
 export const Input = forwardRef((Propiedades: Propiedades, ref: LegacyRef<TextInput> | null) => {// exportação do componente 
     // Desestruturação das propriedades
-    const { IconLeft, IconRight, IconLeftName, IconRightName, title, onIconLeftPress, onIconRightPress, ...rest } = Propiedades;
+    const { IconLeft, IconRight, IconLeftName, IconRightName, title, onIconLeftPress, onIconRightPress,heigh, ...rest } = Propiedades;
     
     const calcularTamanhoDaLargura = () => {
         if(IconLeft && IconRight){
@@ -50,7 +51,7 @@ export const Input = forwardRef((Propiedades: Propiedades, ref: LegacyRef<TextIn
         //essa anotação <> </> indica um fragmento de código... usado quando se deve retornar varios elementos que não sejam apenas view
         <>
             <Text style={stylesInput.textInputs}>{title}</Text>
-            <View style={[stylesInput.caixaInput, {paddingLeft: calcularTamanhoDoEspacamentoEsquerdo()}]}>
+            <View style={[stylesInput.caixaInput, {paddingLeft: calcularTamanhoDoEspacamentoEsquerdo(), height:heigh||55}]}>
                 {IconLeft && IconLeftName && (// Se existe os elementos mostre 
                     <TouchableOpacity onPress={onIconLeftPress} style = {stylesInput.Botao}>
                         <IconLeft 
