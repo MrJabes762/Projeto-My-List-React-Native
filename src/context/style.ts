@@ -39,7 +39,8 @@ export const styleModal = StyleSheet.create ({
         fontWeight:'bold'
     },
     prioridades:{
-        marginLeft:10,
-        flexDirection:'row'
+        marginTop:5,
+        flexDirection:'row',
+        gap:10
     },
 });
