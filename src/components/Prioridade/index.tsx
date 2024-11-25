@@ -6,11 +6,15 @@ import { themes } from "../../global/themes";
 type Props ={
     caption: 'string'
     color:'string'
+    selected?: boolean
 }
 
 export function Prioridade ({...rest}: Props){
     return (
-        <TouchableOpacity style = {[stylePrioridade.container, {backgroundColor: rest?.color}]}>
+        <TouchableOpacity 
+            style = {[stylePrioridade.container, {backgroundColor: rest?.color},
+            rest?.selected && {borderWidth:2}
+        ]}>
             <Text style = {stylePrioridade.textoBotao}>{rest.caption}</Text>
         </TouchableOpacity>
     );
