@@ -11,11 +11,11 @@ type Props ={
 
 export function Prioridade ({...rest}: Props){
     return (
-        <TouchableOpacity 
+        <View
             style = {[stylePrioridade.container, {backgroundColor: rest?.color},
             rest?.selected && {borderWidth:2}
         ]}>
             <Text style = {stylePrioridade.textoBotao}>{rest.caption}</Text>
-        </TouchableOpacity>
+        </View>
     );
 }
