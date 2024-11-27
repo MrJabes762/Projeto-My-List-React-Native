@@ -8,8 +8,6 @@ import { Prioridade } from "../../components/Prioridade";
 import { AuthContextList } from "../../context/authContext_list";
 
 
-
-
 export default function List() {
     /*Essa const que utiliza o AuthContextType
     vai recuperar do AuthContextList apenas a taskList
