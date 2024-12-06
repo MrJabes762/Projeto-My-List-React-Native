@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useRef, useState } from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Dimensions, Text, TouchableOpacity, View, KeyboardAvoidingView, Platform, Alert } from "react-native";
 import { Modalize } from "react-native-modalize";
 import { styleModal } from "./style";
@@ -52,22 +52,23 @@ export const AuthProviderList = (props: any): any => {
     
         try {
             const newItem = {
-                item: Date.now(),
+                item: item !== 0? item:Date.now(),
                 titulo: titulo,
                 descricao: descricao,
                 prioridade: selectPrioriadade,
-                timeLimite: new Date(
+                tempoLimite: new Date(
                     dataSelecionada.getFullYear(),
                     dataSelecionada.getMonth(),
-                    dataSelecionada.getDate(), 
+                    dataSelecionada.getDate(),
                     timerSelecionado.getHours(),
                     timerSelecionado.getMinutes()
-                ).toISOString(),
+                ).toISOString()
             };
-    
-            // Recuperar recupera os dados 
+            
+            
+            // Recuperar os dados do AsyncStorage
             const storageData = await AsyncStorage.getItem('taskList');
-            let taskList = [];
+            let taskList:Array<any> = [];
     
             // Se houver dados, parse como JSON e garanta que seja um array
             if (storageData) {
@@ -81,23 +82,28 @@ export const AuthProviderList = (props: any): any => {
                     taskList = []; // Se falhar no parse ou não for um array, inicialize como vazio
                 }
             }
-    
-            // Adicione o novo item à lista
-            taskList.push(newItem);
-    
+            const itemIndex = taskList.findIndex((task) => task.item === newItem.item);
+
+            if(itemIndex >= 0){
+                taskList[itemIndex] = newItem;
+            }else{
+                // Adicione o novo item à lista
+                taskList.push(newItem);
+            }
             // Salve a lista atualizada no AsyncStorage
             await AsyncStorage.setItem('taskList', JSON.stringify(taskList));
     
             Alert.alert("Sucesso", "Tarefa salva com sucesso!");
             setTaskList(taskList);
             limpaCampos();
-            fechar()
+            fechar();
     
         } catch (error) {
             console.error("Erro ao salvar os dados:", error);
             Alert.alert("Erro", "Não foi possível salvar a tarefa.");
         }
     };
+    
     
     const limpaCampos = () =>{
         setTitulo('');
@@ -107,6 +113,50 @@ export const AuthProviderList = (props: any): any => {
         setDataSeleconada(new Date ());
         setTimerSelecionada (new Date ())
     }
+
+    async function getListaDeTarefas () {
+        try {
+            const storageData = await AsyncStorage.getItem('taskList');
+            const taskList = storageData ? JSON.parse(storageData) : [];
+            setTaskList(taskList);
+        } catch (error) {
+        }
+    }
+
+    const handleDelete = async (itemParaDeletar) => {
+        try {
+            const storageData = await AsyncStorage.getItem('taskList');
+            const taskList = storageData ? JSON.parse(storageData) : [];
+            
+            const listaAtualizada = taskList.filter(item => item.item !== itemParaDeletar.item);
+            
+            await AsyncStorage.setItem('taskList', JSON.stringify(listaAtualizada));
+            setTaskList(listaAtualizada);
+        } catch (error) {
+            console.error('Erro ao excluir', error);
+            Alert.alert("Erro", "Não foi possível excluir a tarefa.");
+        }
+    };
+    
+    const handleEditar = async(itemParaEditar:PropCard) => {
+        try {
+            //Carraga as informações dos item para edição 
+            setTitulo(itemParaEditar.titulo);
+            setDescricao(itemParaEditar.descricao);
+            setSelectPrioridade(itemParaEditar.prioridade);
+            setItem (itemParaEditar.item);
+
+            const tempoLimite = new Date(itemParaEditar.tempoLimite)
+            setDataSeleconada(tempoLimite);
+            setTimerSelecionada(tempoLimite);
+            //Abri o modal
+            abrir();
+        } catch (error) {
+            console.error('Erro ao editar', error);
+            Alert.alert("Erro", "Não foi possível editar a tarefa.");
+        }
+    }
+
     const _renderPropriedades = () => {
         return (
             prioridades.map((item, index) => (
@@ -217,9 +267,12 @@ export const AuthProviderList = (props: any): any => {
     const fechar = () => {
         modalizeRef?.current?.close();// Fechar Modal
     }
-    console.log(taskList);
+    // o que fazer na primeira rederização da tela 
+    useEffect(() => {
+        getListaDeTarefas();
+    },[]);
     return (// Qual a navegação ou tela vai dentro 
-        <AuthContextList.Provider value={{ abrir, taskList }}>
+        <AuthContextList.Provider value={{ abrir, taskList, handleDelete, handleEditar}}>
             {props.children}
             <Modalize //A tela que abre por cima 
                 ref={modalizeRef}
