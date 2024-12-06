@@ -65,5 +65,31 @@ export const styleList = StyleSheet.create ({
         fontSize:14,
         color:themes.colors.verdeCLaroIfba,
         marginRight:3
+    },
+    cardData:{
+        fontSize:14,
+        color:themes.colors.black,
+        marginRight:3
+    },
+    botaoEditar:{
+        backgroundColor: themes.colors.verdeMaisouMenos,
+        justifyContent:'center',
+        alignItems:'center',
+        width:100,
+        borderRadius:10,
+        marginVertical:10,
+        borderWidth:3,
+        borderColor:'white'
+    },
+    botaoDeletar:{
+        backgroundColor: themes.colors.vermelhoIfba,
+        justifyContent:'center',
+        alignItems:'center',
+        width:100,
+        borderRadius:10,
+        marginVertical:10,
+        borderWidth:3,
+        borderColor:'white'
     }
+
 });
