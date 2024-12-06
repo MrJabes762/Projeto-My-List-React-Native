@@ -1,8 +1,8 @@
 interface AuthContextType {
     taskList:Array<PropCard>,
     abrir:void,
-    editar: Function,
-    deletar: Function
+    handleDelete: Function,
+    handleEditar: Function
 }
 
 type PropCard = {
