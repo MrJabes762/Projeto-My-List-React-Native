@@ -1,16 +1,15 @@
-const formatDateToBr = (data) => {
-    const parsedDate = new Date(data);
+export const formatDateToBr = (dateString: string): string => {
+    try {
+        const date = new Date(dateString);
+        const optionsDate = { day: '2-digit', month: '2-digit', year: 'numeric' };
+        const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit' };
 
-    const dia = String(parsedDate.getDate()).padStart(2, '0');
-    const mes = String(parsedDate.getMonth() + 1).padStart(2, '0'); // getMonth() é 0-based
-    const ano = parsedDate.getFullYear();
+        const formattedDate = date.toLocaleDateString('pt-BR', optionsDate);
+        const formattedTime = date.toLocaleTimeString('pt-BR', optionsTime);
 
-    const horas = String(parsedDate.getHours()).padStart(2, '0');
-    const minutos = String(parsedDate.getMinutes()).padStart(2, '0');
-
-    return `${dia}/${mes}/${ano} ${horas}:${minutos}`;
+        return `${formattedDate} às ${formattedTime}`;
+    } catch (error) {
+        console.error('Erro ao formatar a data:', error);
+        return 'Data inválida';
+    }
 };
-
-export {
-    formatDateToBr
-}
