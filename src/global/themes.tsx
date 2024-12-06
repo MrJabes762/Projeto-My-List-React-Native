@@ -4,6 +4,7 @@ export const themes = {
         verdeCLaroIfba: '#79BA43',
         verdeMaisouMenos: '#31A042',
         verdeEscuroIfba: '#0B671B',
-        black:'black'
+        black:'black',
+        transparente: 'rgba(0,0,0,0.5)' 
     }
 }
