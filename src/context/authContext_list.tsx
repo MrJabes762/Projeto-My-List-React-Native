@@ -30,7 +30,8 @@ export const AuthProviderList = (props: any): any => {
     const [mostrarDatePicker, setMostrarDatePicker] = useState(false);
     const [mostrarTimerPicker, setMostrarTimerPicker] = useState(false);
     const [item, setItem] = useState (0);
-    const [taskList, setTaskList] = useState ([]);
+    const [taskList, setTaskList] = useState <Array<PropCard>> ([]);
+    const [taskListRecuperar,setTaskListRecuperar] = useState <Array<PropCard>>([]);
 
     const prioridades = [
         { caption: 'Urgente', color: themes.colors.vermelhoIfba },
@@ -95,6 +96,7 @@ export const AuthProviderList = (props: any): any => {
     
             Alert.alert("Sucesso", "Tarefa salva com sucesso!");
             setTaskList(taskList);
+            setTaskListRecuperar(taskList);
             limpaCampos();
             fechar();
     
@@ -119,6 +121,7 @@ export const AuthProviderList = (props: any): any => {
             const storageData = await AsyncStorage.getItem('taskList');
             const taskList = storageData ? JSON.parse(storageData) : [];
             setTaskList(taskList);
+            setTaskListRecuperar(taskList);
         } catch (error) {
         }
     }
@@ -132,6 +135,7 @@ export const AuthProviderList = (props: any): any => {
             
             await AsyncStorage.setItem('taskList', JSON.stringify(listaAtualizada));
             setTaskList(listaAtualizada);
+            setTaskListRecuperar(listaAtualizada);
         } catch (error) {
             console.error('Erro ao excluir', error);
             Alert.alert("Erro", "Não foi possível excluir a tarefa.");
@@ -156,7 +160,28 @@ export const AuthProviderList = (props: any): any => {
             Alert.alert("Erro", "Não foi possível editar a tarefa.");
         }
     }
-
+    const filtrar = (t: string) => {
+        if (taskListRecuperar.length === 0) {
+            return; // Se não houver tarefas, não faz nada
+        }
+        const campos = ['titulo', 'descricao'];
+        const pesquisa = t.trim().toLowerCase(); // Convertendo a pesquisa para caixa baixa fora do loop
+    
+        if (pesquisa) {
+            // Filtra a lista com base no termo de pesquisa
+            const listaFiltrada = taskListRecuperar.filter((item) => {
+                return campos.some((campo) =>
+                    item[campo]?.trim().toLowerCase().includes(pesquisa) // Verifica se algum campo contém o termo pesquisado
+                );
+            });
+    
+            setTaskList(listaFiltrada); // Atualiza a lista com as tarefas filtradas
+        } else {
+            setTaskList(taskListRecuperar); // Se o filtro estiver vazio, restaura a lista original
+        }
+    };
+    
+    
     const _renderPropriedades = () => {
         return (
             prioridades.map((item, index) => (
@@ -272,7 +297,7 @@ export const AuthProviderList = (props: any): any => {
         getListaDeTarefas();
     },[]);
     return (// Qual a navegação ou tela vai dentro 
-        <AuthContextList.Provider value={{ abrir, taskList, handleDelete, handleEditar}}>
+        <AuthContextList.Provider value={{ abrir, taskList, handleDelete, handleEditar,filtrar}}>
             {props.children}
             <Modalize //A tela que abre por cima 
                 ref={modalizeRef}
