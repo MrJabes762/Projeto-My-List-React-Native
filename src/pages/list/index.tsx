@@ -17,7 +17,7 @@ export default function List() {
     que é a variavel da qual deve ser comun aos 2 para pegar os dados criados no 
     Async Storage e trazer para listagem
     */
-    const { taskList, handleDelete, handleEditar } = useContext<AuthContextType>(AuthContextList);
+    const { taskList, handleDelete, handleEditar,filtrar } = useContext<AuthContextType>(AuthContextList);
     const swipeableRefs = useRef([]);
 
     const deletar = () => {
@@ -103,6 +103,7 @@ export default function List() {
                     <Input
                         IconLeft={MaterialIcons}
                         IconLeftName='search'
+                        onChangeText={(t) => filtrar(t)}
                     />
                 </View>
             </View>
