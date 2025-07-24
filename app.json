@@ -16,7 +16,9 @@
       },
       "package": "com.mrjabes762.MyList"
     },
-    "web": {},
+    "web": {
+      "publicPath": "."
+    },
     "extra": {
       "eas": {
         "projectId": "1df8f55c-fc38-4173-a3f4-cbf207056202"
