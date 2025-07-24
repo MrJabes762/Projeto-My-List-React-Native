@@ -2,13 +2,14 @@
   "name": "mylist",
   "version": "1.0.0",
   "main": "expo/AppEntry.js",
+  "homepage": "https://MrJabes762.github.io/Projeto-My-List-React-Native",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build:web": "npm run build:web",
-    "deploy": "npm run build:web && gh-pages -d dist"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@expo/metro-runtime": "~4.0.0",
@@ -20,7 +21,6 @@
     "expo": "^52.0.6",
     "expo-doctor": "^1.13.5",
     "expo-status-bar": "~2.0.0",
-    "gh-pages": "^6.3.0",
     "react": "18.3.1",
     "react-dom": "^18.3.1",
     "react-native": "0.76.9",
@@ -35,6 +35,7 @@
     "@react-native-community/cli": "latest",
     "@types/react": "~18.3.12",
     "@types/react-native": "^0.73.0",
+    "gh-pages": "^6.3.0",
     "typescript": "~5.3.3"
   },
   "private": true
