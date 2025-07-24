@@ -22,9 +22,10 @@ jobs:
         run: npm install
 
       - name: Buildar aplicação Web (Expo)
-        run: npm run build
+        run: npx expo export:web
 
       - name: Deploy para o GitHub Pages
-        run: npm run deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./web-build
