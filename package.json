@@ -9,6 +9,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "predeploy": "npm run build",
+    "build": "expo export:web",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {

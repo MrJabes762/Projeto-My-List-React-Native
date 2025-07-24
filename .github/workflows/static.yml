@@ -1,4 +1,4 @@
-name: Deploy pelo Github PAges
+name: Deploy pelo GitHub Pages
 
 on:
   push:
@@ -18,13 +18,13 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Instalação das Dependências
+      - name: Instalar dependências
         run: npm install
 
-      - name: Build
+      - name: Buildar aplicação Web (Expo)
         run: npm run build
 
-      - name: Deploy pelo github pages
+      - name: Deploy para o GitHub Pages
         run: npm run deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
