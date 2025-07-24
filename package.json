@@ -2,34 +2,40 @@
   "name": "mylist",
   "version": "1.0.0",
   "main": "expo/AppEntry.js",
+  "homepage": "https://MrJabes762.github.io/Projeto-My-List-React-Native",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@expo/metro-runtime": "~4.0.0",
+    "@react-native-async-storage/async-storage": "1.23.1",
+    "@react-native-community/datetimepicker": "8.2.0",
     "@react-navigation/bottom-tabs": "^6.6.1",
+    "@react-navigation/native": "^6.1.18",
     "@react-navigation/stack": "^6.4.1",
     "expo": "^52.0.6",
+    "expo-doctor": "^1.13.5",
     "expo-status-bar": "~2.0.0",
     "react": "18.3.1",
-    "react-dom": "18.3.1",
-    "react-native": "0.76.1",
+    "react-dom": "^18.3.1",
+    "react-native": "0.76.9",
     "react-native-gesture-handler": "~2.20.2",
     "react-native-modalize": "^2.1.1",
     "react-native-vector-icons": "^10.2.0",
-    "react-native-web": "~0.19.13",
-    "yarn": "^1.22.22",
-    "@react-native-community/datetimepicker": "8.2.0",
-    "@react-native-async-storage/async-storage": "1.23.1"
+    "react-native-web": "^0.19.13",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@react-native-community/cli": "latest",
     "@types/react": "~18.3.12",
     "@types/react-native": "^0.73.0",
+    "gh-pages": "^6.3.0",
     "typescript": "~5.3.3"
   },
   "private": true
