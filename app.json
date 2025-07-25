@@ -29,8 +29,8 @@
       "package": "com.mr.jabes762.ProjetoMyListReactNative"
     },
     "web": {
-      "output": "static",
-      "favicon": "./assets/favicon.png"
+      "output": "single",
+      "favicon": "./src/assets/logoifba.png"
     }
   }
 }

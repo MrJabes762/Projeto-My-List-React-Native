@@ -16,8 +16,11 @@ jobs:
           node-version: '18'
       - run: npm ci
       - run: npm run predeploy
+      - name: Adjust asset paths
+        run: sed -i 's|src="/Projeto-My-List-React-Native/|src="./|g' dist/index.html
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           clean: true
+        
