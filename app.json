@@ -7,6 +7,9 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "experiments":{
+      "baseUrl": "Projeto-My-List-React-Native"
+    },
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",

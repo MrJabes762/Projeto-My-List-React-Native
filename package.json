@@ -2,11 +2,14 @@
   "name": "projeto-my-list-react-native",
   "version": "1.0.0",
   "main": "index.ts",
+  "homepage": "https://mrjabes762.github.io/Projeto-My-List-React-Native",
   "scripts": {
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "predeploy": "expo export --platform web",
+    "deploy": "gh-pages --nojekyll -d dist"
   },
   "dependencies": {
     "@expo/metro-runtime": "^5.0.4",
