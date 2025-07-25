@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "platforms": ["ios", "android", "web"],
     "newArchEnabled": true,
     "experiments":{
       "baseUrl": "/Projeto-My-List-React-Native"
@@ -28,6 +29,7 @@
       "package": "com.mr.jabes762.ProjetoMyListReactNative"
     },
     "web": {
+      "output": "static",
       "favicon": "./assets/favicon.png"
     }
   }
