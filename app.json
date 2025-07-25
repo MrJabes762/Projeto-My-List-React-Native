@@ -29,8 +29,11 @@
       "package": "com.mr.jabes762.ProjetoMyListReactNative"
     },
     "web": {
-      "output": "single",
-      "favicon": "./src/assets/logoifba.png"
+      "output": "export",
+      "favicon": "./src/assets/logoifba.png",
+      "build":{
+        "publicPath": "/Projeto-My-List-React-Native"
+      }
     }
   }
 }

@@ -1,26 +1,33 @@
 name: Deploy versão web do projeto My List React Native
+
 on:
   push:
     branches: [master]
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
+
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
+
       - run: npm ci
+
       - run: npm run predeploy
-      - name: Adjust asset paths
-        run: sed -i 's|src="/Projeto-My-List-React-Native/|src="./|g' dist/index.html
+
+      - uses: actions/configure-pages@v3
+
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           clean: true
-        
