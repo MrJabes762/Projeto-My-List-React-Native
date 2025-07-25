@@ -8,6 +8,8 @@ import { themes } from "../global/themes";
 import { Prioridade } from "../components/Prioridade";
 import { DateTimer } from "../components/CustomDateTimePicker";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { PropCard } from "../global/Props";
 
 
 /* Essa const fascilita a exibição do botão de mais para exibir 
@@ -305,7 +307,9 @@ export const AuthProviderList = (props: any): any => {
                 adjustToContentHeight={true}
                 modalStyle={styleModal.modal} // Estilo do conteúdo do modal
             >
-                {container()}
+                <GestureHandlerRootView>
+                    {container()}
+                </GestureHandlerRootView>
             </Modalize>
         </AuthContextList.Provider>
     );

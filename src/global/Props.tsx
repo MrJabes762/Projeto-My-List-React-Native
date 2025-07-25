@@ -1,4 +1,4 @@
-interface AuthContextType {
+export interface AuthContextType {
     taskList:Array<PropCard>,
     abrir:void,
     handleDelete: Function,
@@ -6,7 +6,7 @@ interface AuthContextType {
     filtrar:(t:string) => void
 }
 
-type PropCard = {
+export type PropCard = {
     item:number,
     titulo:string,
     descricao:string,
@@ -14,4 +14,4 @@ type PropCard = {
     tempoLimite: string,
 }
 
-type Prioridade =  'Urgente' | 'Opcional';
+export type Prioridade =  'Urgente' | 'Opcional';
